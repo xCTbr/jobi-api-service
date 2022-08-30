@@ -1,0 +1,16 @@
+service: serverless-test-python
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  hello:
+    handler: app/handler.hello
+    events:
+      - http:
+          path: /hello
+          method: GET
+          cors: true
