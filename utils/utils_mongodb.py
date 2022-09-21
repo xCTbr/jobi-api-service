@@ -3,8 +3,8 @@ from pymongo import MongoClient
 
 
 # Instatiate MongoDB Client
-mongo_user = 'jobi-service-user'
-mongo_pass = 'mnsDkMSWbGFK2FPd'
+mongo_user = '<user>'
+mongo_pass = '<password>'
 mongo_conn_string = f'mongodb+srv://{mongo_user}:{mongo_pass}@jobi-cluster.bc1kiqp.mongodb.net/?retryWrites=true&w=majority'
 
 cluster = MongoClient(mongo_conn_string)
