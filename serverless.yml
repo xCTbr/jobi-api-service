@@ -1,4 +1,4 @@
-service: serverless-test-python
+service: jobi-api-service
 
 frameworkVersion: "3"
 
