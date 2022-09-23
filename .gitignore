@@ -6,7 +6,7 @@ jspm_packages
 
 # Notebooks
 .ipynb_checkpoints
-*.ipynb
+#*.ipynb
 
 # Python
 __pycache__/
