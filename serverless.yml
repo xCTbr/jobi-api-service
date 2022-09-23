@@ -7,10 +7,10 @@ provider:
   runtime: python3.8
 
 functions:
-  hello:
-    handler: app/handler.hello
+  getCursos:
+    handler: app/curso-handler.getCursos
     events:
       - http:
-          path: /hello
+          path: /cursos
           method: GET
           cors: true
