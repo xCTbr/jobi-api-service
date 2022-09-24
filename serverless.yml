@@ -13,4 +13,3 @@ functions:
       - http:
           path: /cursos
           method: GET
-          cors: true
