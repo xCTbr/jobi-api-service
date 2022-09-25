@@ -1,13 +1,11 @@
 service: jobi-api-service
 
-#frameworkVersion: "3"
-
 provider:
   name: aws
   stage: ${opt:stage, "dev"}
   runtime: python3.8
-  #region: ${opt:region, "us-east-1"}
-  environment: ${file(environment.yml)}
+  environment:
+    MONGO_SECRET: arn:aws:secretsmanager:us-east-1:394753831255:secret:mongodb/service-user/credentials-nisjOX
   iam: ${file(iam.yml)}
 
 plugins:
