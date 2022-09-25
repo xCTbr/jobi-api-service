@@ -12,13 +12,7 @@ plugins:
   - "serverless-python-requirements"
 
 functions:
-  getCursos:
-    handler: app/curso-handler.getCursos
-    events:
-      - http:
-          path: /cursos
-          method: GET
-          cors: true
+  - ${file(app/app.yml)}
 
 resources:
   - ${file(resources.yml)}

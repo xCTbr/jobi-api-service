@@ -1,0 +1,7 @@
+getCursos:
+  handler: app/curso.getCursos
+  events:
+    - http:
+        path: /cursos
+        method: GET
+        cors: true
