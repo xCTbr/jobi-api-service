@@ -1,0 +1,3 @@
+STAGE: ${file(serverless.yml):provider.stage}
+
+MONGO_SECRET: arn:aws:secretsmanager:us-east-1:394753831255:secret:mongodb/service-user/credentials-nisjOX

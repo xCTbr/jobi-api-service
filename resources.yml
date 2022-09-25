@@ -1,0 +1,30 @@
+Resources:
+  DefaultRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: ${file(serverless.yml):service}-${file(serverless.yml):provider.stage}-defaultRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: ${file(serverless.yml):service}-${file(serverless.yml):provider.stage}-defaultRolePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - secretsmanager:GetSecretValue
+                Resource:
+                  - ${file(serverless.yml):provider.environment.MONGO_SECRET}
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource:
+                  - "*"

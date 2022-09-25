@@ -33,9 +33,13 @@ def getCursos(event, context):
     for x in results:
         list_cursos.append(x)
 
+    body = {
+        "data": list_cursos
+    }
+
     response = {
         "statusCode": 200,
-        "body": list_cursos
+        "body": json.dumps(body)
     }
 
     return response
