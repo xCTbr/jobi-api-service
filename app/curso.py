@@ -1,32 +1,11 @@
-import boto3
 import json
-import pymongo
-from pymongo import MongoClient
+import services.services_mongodb as mg_services
 
 
 def getCursos(event, context):
 
-    # Gets MongoDB Credentials
-    session = boto3.session.Session()
-    client = session.client(
-        service_name='secretsmanager',
-        region_name='us-east-1')
+    collection = mg_services.connectCursosCollection()
 
-    secret_response = client.get_secret_value(
-        SecretId='mongodb/service-user/credentials')
-    mongo_credentials = json.loads(secret_response['SecretString'])
-
-    mongo_user = mongo_credentials['user']
-    mongo_password = mongo_credentials['password']
-
-    # Instatiate MongoDB Client
-    mongo_conn_string = f'mongodb+srv://{mongo_user}:{mongo_password}@jobi-cluster.bc1kiqp.mongodb.net/?retryWrites=true&w=majority'
-
-    cluster = MongoClient(mongo_conn_string)
-    db = cluster["jobi-principal"]
-    collection = db["cursos"]
-
-    # Query all document
     results = collection.find({})
 
     list_cursos = []
@@ -35,6 +14,26 @@ def getCursos(event, context):
 
     body = {
         "data": list_cursos
+    }
+
+    response = {
+        "statusCode": 200,
+        "body": json.dumps(body)
+    }
+
+    return response
+
+
+def getCurso(event, context):
+
+    collection = mg_services.connectCursosCollection()
+
+    curso_id = int(event['pathParameters']['cursoId'])
+
+    result = collection.find_one({"_id": curso_id})
+
+    body = {
+        "data": result
     }
 
     response = {

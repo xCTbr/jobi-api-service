@@ -5,3 +5,11 @@ getCursos:
         path: /cursos
         method: GET
         cors: true
+
+getCurso:
+  handler: app/curso.getCurso
+  events:
+    - http:
+        path: /cursos/{cursoId}
+        method: GET
+        cors: true
