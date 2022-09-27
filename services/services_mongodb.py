@@ -1,11 +1,9 @@
 import boto3
 import json
-import pymongo
 from pymongo import MongoClient
 
 
-def getCursos(event, context):
-
+def connectCursosCollection():
     # Gets MongoDB Credentials
     session = boto3.session.Session()
     client = session.client(
@@ -26,16 +24,4 @@ def getCursos(event, context):
     db = cluster["jobi-principal"]
     collection = db["cursos"]
 
-    # Query all document
-    results = collection.find({})
-
-    list_cursos = []
-    for x in results:
-        list_cursos.append(x)
-
-    response = {
-        "statusCode": 200,
-        "body": list_cursos
-    }
-
-    return response
+    return collection
