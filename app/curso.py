@@ -13,12 +13,16 @@ def getCursos(event, context):
         list_cursos.append(x)
 
     body = {
-        "data": list_cursos
+        "resultado": list_cursos
     }
 
     response = {
         "statusCode": 200,
-        "body": json.dumps(body)
+        "body": json.dumps(body),
+        "headers": {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": 'true',
+        }
     }
 
     return response
@@ -33,12 +37,16 @@ def getCurso(event, context):
     result = collection.find_one({"_id": curso_id})
 
     body = {
-        "data": result
+        "resultado": result
     }
 
     response = {
         "statusCode": 200,
-        "body": json.dumps(body)
+        "body": json.dumps(body),
+        "headers": {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": 'true',
+        }
     }
 
     return response
