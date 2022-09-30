@@ -39,6 +39,6 @@ getChallenge:
   handler: app/challenge.getChallenge
   events:
     - http:
-        path: /challenges/{challengeId}
+        path: /challenges/{tecnologiaId}/{challengeId}
         method: GET
         cors: true
