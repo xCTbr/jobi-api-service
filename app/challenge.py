@@ -30,9 +30,11 @@ def getChallenge(event, context):
 
     collection = mg_services.connectChallengesCollection()
 
+    tecnologia_id = int(event['pathParameters']['tecnologiaId'])
     challenge_id = int(event['pathParameters']['challengeId'])
 
-    result = collection.find_one({"_id": challenge_id})
+    result = collection.find_one({"tecnologiaId": tecnologia_id,
+                                  "_id": challenge_id})
 
     body = {
         "resultado": result
