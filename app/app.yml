@@ -1,3 +1,4 @@
+# Tras todos os Cursos
 getCursos:
   handler: app/curso.getCursos
   events:
@@ -6,10 +7,38 @@ getCursos:
         method: GET
         cors: true
 
+# Tras um Curso baseado no ID do curso
 getCurso:
   handler: app/curso.getCurso
   events:
     - http:
         path: /cursos/{cursoId}
+        method: GET
+        cors: true
+
+# Tras todas as Tecnologias
+getTecnologias:
+  handler: app/tecnologia.getTecnologia
+  events:
+    - http:
+        path: /tecnologias
+        method: GET
+        cors: true
+
+# Tras todos os Challenges baseados no ID de um Tecnologia
+getChallenges:
+  handler: app/challenge.getChallenges
+  events:
+    - http:
+        path: /challenges/{tecnologiaId}
+        method: GET
+        cors: true
+
+# Tras um Challenge baseado no ID do challenge
+getChallenge:
+  handler: app/challenge.getChallenge
+  events:
+    - http:
+        path: /challenges/{challengeId}
         method: GET
         cors: true

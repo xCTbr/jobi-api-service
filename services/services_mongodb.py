@@ -3,7 +3,7 @@ import json
 from pymongo import MongoClient
 
 
-def connectCursosCollection():
+def connectCollection(collection):
     # Gets MongoDB Credentials
     session = boto3.session.Session()
     client = session.client(
@@ -22,6 +22,21 @@ def connectCursosCollection():
 
     cluster = MongoClient(mongo_conn_string)
     db = cluster["jobi-principal"]
-    collection = db["cursos"]
+    collection = db[f"{collection}"]
 
+    return collection
+
+
+def connectCursosCollection():
+    collection = connectCollection('cursos')
+    return collection
+
+
+def connectTecnologiasCollection():
+    collection = connectCollection('tecnologias')
+    return collection
+
+
+def connectChallengesCollection():
+    collection = connectCollection('challenges')
     return collection
