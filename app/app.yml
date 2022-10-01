@@ -13,3 +13,43 @@ getCurso:
         path: /cursos/{cursoId}
         method: GET
         cors: true
+
+getVagas:
+  handler: app/vaga.getVagas
+  events:
+    - http:
+        path: /vagas
+        method: GET
+        cors: true
+
+getVaga:
+  handler: app/vaga.getVaga
+  events:
+    - http:
+        path: /vagas/{vagaId}
+        method: GET
+        cors: true
+
+getTecnologias:
+  handler: app/tecnologia.getTecnologias
+  events:
+    - http:
+        path: /tecnologias
+        method: GET
+        cors: true
+
+getChallenges:
+  handler: app/challenge.getChallenges
+  events:
+    - http:
+        path: /challenges/{tecnologiaId}
+        method: GET
+        cors: true
+
+getChallenge:
+  handler: app/challenge.getChallenge
+  events:
+    - http:
+        path: /challenges/{tecnologiaId}/{challengeId}
+        method: GET
+        cors: true
