@@ -10,8 +10,12 @@ def getChallenges(event, context):
 
     result = collection.find({"tecnologiaId": tecnologia_id})
 
+    list_challenges = []
+    for x in result:
+        list_challenges.append(x)
+
     body = {
-        "resultado": result
+        "resultado": list_challenges
     }
 
     response = {

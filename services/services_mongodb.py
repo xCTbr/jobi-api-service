@@ -40,3 +40,8 @@ def connectTecnologiasCollection():
 def connectChallengesCollection():
     collection = connectCollection('challenges')
     return collection
+
+
+def connectVagasCollection():
+    collection = connectCollection('vagas')
+    return collection
